@@ -57,7 +57,6 @@ namespace IceCreamProject.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 Main weather = findWeather(order.City);
                 order.Date = DateTime.Now.Date;
                 order.FeelsLike = weather.feels_like;
