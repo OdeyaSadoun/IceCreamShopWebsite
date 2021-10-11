@@ -13,4 +13,6 @@ using IceCreamProject.Models;
         }
 
         public DbSet<IceCreamProject.Models.Order> Order { get; set; }
+
+        public DbSet<IceCreamProject.Models.IceCream> IceCream { get; set; }
     }
