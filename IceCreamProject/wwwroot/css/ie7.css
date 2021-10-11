@@ -1,0 +1,33 @@
+/** Website template by freewebsitetemplates.com **/
+#page #content .content .header .footer .body {
+	overflow:visible;
+}
+
+#page #content .content .featured ul li h2 {
+    font-family: 'PTSansNarrowRegular';
+    font-weight: normal;
+    margin: 0;
+    position: absolute;
+    text-align: center;
+    width: 340px;
+	left:0;
+	top:25px;
+}
+#page #content .content .section .comment p {
+    font-size: 18px;
+    margin: 20px 0 0;
+}
+#page #content .content .header .footer .body .section .payment label.paycreditcard{
+	width:287px;
+}
+#page #content .content .header .footer .body .section .payment table tr td select {
+    border-color: #8C836B;
+    border-style: solid;
+    border-width: 1px;
+    color: #8C836B;
+    margin-bottom: 10px;
+    margin-right: 30px;
+    padding: 3px;
+    width: 80px;
+	height:30px;
+}

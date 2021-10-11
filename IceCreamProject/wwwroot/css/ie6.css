@@ -1,0 +1,31 @@
+/** Website template by freewebsitetemplates.com **/
+#page #sidebar {
+	padding: 0;
+}
+#page #sidebar h2 {
+	width:236px;
+	padding: 0 12px;
+	margin-left:0;
+}
+#page #content #header ul.navigation {
+	margin-top:50px;
+}
+#page #content .content .section {
+	margin-top:20px;
+}
+#page #content .content .section .comment {
+	padding: 20px 50px 0 50px;
+}
+#page #content .content .header .footer .body ul.contact li textarea {
+	width:490px;	
+	height:140px;	
+}
+#page #content .content .header .footer .body ul.section li.last {
+	width:190px;
+}
+#page #content .content .header .footer .body .section .payment {
+	width:290px;
+}
+#page #content .content .header .footer .body #connect {
+	width:600px;
+}

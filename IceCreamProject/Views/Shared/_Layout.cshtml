@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+   @* <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - IceCreamProject</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />*@
+	<title>Blog - Website Template</title>
+	<meta charset="utf-8">
+	<link href="~/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <header>
+		<div id="page">
+			<div id="content">
+ <div id="header">
+				<ul class="navigation">
+					<li>
+						<a href="about.html">About Us</a>
+					</li>
+					<li>
+						<a href="flavors.html">Flavors</a>
+					</li>
+					<li>
+						<a href="dessert.html">Dessert Recipes</a>
+					</li>
+					<li>
+						<a asp-controller="Orders" asp-action="create">Order</a>
+					</li>
+					<li>
+						<a  href="blog.html">Blog</a>
+					</li>
+					<li>
+						<a href="contact.html">Contact Us</a>
+					</li>
+				</ul>
+			</div>
+			</div>
+			</div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+<div id="page">
+			<div id="content">
+ <div id="footer">
+				<ul>
+					<li>
+						<a href="index.html">Home</a>
+					</li>
+					<li>
+						<a href="about.html">About Us</a>
+					</li>
+					<li>
+						<a href="index.html">Flavors</a>
+					</li>
+					<li>
+						<a href="dessert.html">Dessert Recipes</a>
+					</li>
+					<li>
+						<a href="contact.html">Contact Us</a>
+					</li>
+				</ul>
+				<span>&copy;2011 <a href="index.html">Frost Sweets Gourmet Ice Cream</a> All Rights Reserved</span>
+				<ul class="connect">
+					<li>
+						FOLLOW US:
+					</li>
+					<li>
+						<a class="facebook" href="http://www.freewebsitetemplates.com/go/facebook">&nbsp;</a>
+					</li>
+					<li>
+						<a class="twitter" href="http://www.freewebsitetemplates.com/go/twitter/">&nbsp;</a>
+					</li>
+					<li>
+						<a class="email" href="http://www.freewebsitetemplates.com/misc/contact">&nbsp;</a>
+					</li>
+					<li>
+						<a class="googleplus" href="http://www.freewebsitetemplates.com/go/googleplus/">&nbsp;</a>
+					</li>
+				</ul>
+			</div>
+			</div>
+			</div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
