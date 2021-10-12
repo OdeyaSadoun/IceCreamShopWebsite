@@ -15,4 +15,8 @@ using IceCreamProject.Models;
         public DbSet<IceCreamProject.Models.Order> Order { get; set; }
 
         public DbSet<IceCreamProject.Models.IceCream> IceCream { get; set; }
+
+        public DbSet<IceCreamProject.Models.ConnectUs> ConnectUs { get; set; }
+
+        public DbSet<IceCreamProject.Models.Login> Login { get; set; }
     }
