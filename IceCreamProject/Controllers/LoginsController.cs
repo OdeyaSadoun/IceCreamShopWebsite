@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IceCreamProject.Models;
 
-namespace IceCreamProject.Views.ConnectUs
+namespace IceCreamProject.Controllers
 {
     public class LoginsController : Controller
     {

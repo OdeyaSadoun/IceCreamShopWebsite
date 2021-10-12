@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IceCreamProject.Migrations
 {
     [DbContext(typeof(OrdersContext))]
-    [Migration("20211012073509_Login_Create")]
+    [Migration("20211012105147_Login_Create")]
     partial class Login_Create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
