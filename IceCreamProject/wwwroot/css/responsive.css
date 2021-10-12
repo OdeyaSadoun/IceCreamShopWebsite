@@ -1,0 +1,126 @@
+@media (max-width: 1300px) {}
+
+@media (max-width: 1120px) {}
+
+@media (max-width: 992px) {
+  .hero_area {
+    min-height: auto;
+  }
+
+  .custom_nav-container .navbar-nav {
+    padding-top: 15px;
+  }
+
+
+  .custom_nav-container .navbar-nav .nav-item .nav-link {
+    padding: 5px 25px;
+    margin: 5px 0;
+  }
+
+  .slider_section .detail-box h1 {
+    font-size: 2.5rem;
+  }
+
+
+  .product_section .box .img-box::before {
+    width: 220px;
+    height: 220px;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .slider_section {
+    padding-bottom: 510px;
+  }
+
+  .hero_area .hero_bg_box img {
+    object-position: 8% bottom;
+  }
+
+  .slider_section .detail-box {
+    text-align: center;
+  }
+
+  .slider_section .detail-box .btn-box,
+  .slider_section .carousel_btn-box {
+    justify-content: center;
+  }
+
+  .about_section {
+    background: linear-gradient(to bottom, #fcafc0 50%, transparent 50%);
+  }
+
+  .about_section2 {
+    background: linear-gradient(to bottom, #ffccb1 50%, transparent 50%);
+  }
+
+  .contact_section {
+    background: linear-gradient(to bottom, #fcafc0 625px, transparent 625px);
+  }
+
+  /* 
+  .about_section.about_section2.layout_padding {
+    padding-bottom: 0;
+  } */
+
+  .about_section2 .row {
+    flex-direction: column-reverse;
+  }
+
+  .contact_section .map_container {
+    margin-top: 90px;
+  }
+
+  .info_section .info_contact {
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 576px) {
+  .hero_area .hero_bg_box img {
+    object-position: 18% bottom;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .about_section {
+    background: linear-gradient(to bottom, #fcafc0 45%, transparent 45%);
+  }
+
+  .about_section2 {
+    background: linear-gradient(to bottom, #ffccb1 45%, transparent 45%);
+  }
+}
+
+@media (max-width: 420px) {
+  .slider_section .detail-box h1 {
+    font-size: 2rem;
+  }
+
+  .hero_area .hero_bg_box img {
+    object-position: 20% bottom;
+  }
+
+  .about_section2 {
+    background: linear-gradient(to bottom, #ffccb1 40%, transparent 40%);
+  }
+}
+
+@media (max-width: 376px) {
+  .about_section {
+    background: linear-gradient(to bottom, #fcafc0 40%, transparent 40%);
+  }
+
+  .about_section2 {
+    background: linear-gradient(to bottom, #ffccb1 35%, transparent 35%);
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+  }
+}
