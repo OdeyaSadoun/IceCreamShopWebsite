@@ -19,4 +19,8 @@ using IceCreamProject.Models;
         public DbSet<IceCreamProject.Models.ConnectUs> ConnectUs { get; set; }
 
         public DbSet<IceCreamProject.Models.Login> Login { get; set; }
+
+        public DbSet<IceCreamProject.Models.Login1> Login1 { get; set; }
+
+        public DbSet<IceCreamProject.Models.IceCreamFlavor> IceCreamFlavor { get; set; }
     }

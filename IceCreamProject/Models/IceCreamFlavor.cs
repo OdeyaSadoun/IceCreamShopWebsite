@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace IceCreamProject.Models
 {
-    public class IceCream
+    public class IceCreamFlavor
     {
         public int Id { get; set; }
         public double Price { get; set; }
         public double Amount { get; set; }
         public string Flavour { get; set; }
-        public string Color { get; set; }
-
+        public string ImagePath { get; set; }
+        public string Details { get; set; }
     }
 }
