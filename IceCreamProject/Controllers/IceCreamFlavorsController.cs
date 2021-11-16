@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IceCreamProject.Models;
+using System.Net;
+using Firebase.Storage;
 
 //nisayon
 namespace IceCreamProject.Controllers
@@ -56,8 +58,10 @@ namespace IceCreamProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Price,Amount,Flavour,ImagePath,Details")] IceCreamFlavor iceCreamFlavor)
         {
+
             if (ModelState.IsValid)
             {
+                firebaseImgAsync(iceCreamFlavor.ImagePath, iceCreamFlavor.Flavour);
                 ImaggaSampleClass imagga = new ImaggaSampleClass();
                 var result = imagga.CheckImage(iceCreamFlavor.ImagePath);
                 for (int i = 0; i < 10; i++)
@@ -77,7 +81,7 @@ namespace IceCreamProject.Controllers
 
         /**
 *  Predictor for taste from model/61536e8299dfe70749005f17
-*  Predictive model by BigML - Machine Learning Made Easy
+*  Predictive model by BigML - Machine Learning Made Easy 00000
 */
         public IActionResult predict()
         {
@@ -413,5 +417,17 @@ namespace IceCreamProject.Controllers
         {
             return _context.IceCreamFlavor.Any(e => e.Id == id);
         }
+
+        public async void firebaseImgAsync(string webUrl, string name)
+        {
+            WebClient client = new WebClient();
+            string path = @"C:\imges\" + name + ".jpg";
+            client.DownloadFile(webUrl, path);//Download img to computer
+            var stream = System.IO.File.Open(path, System.IO.FileMode.Open);
+            var task = new FirebaseStorage("icecream-d62c3.appspot.com").Child(name +
+           ".jpg").PutAsync(stream);
+            var url = await task;
+        }
+
     }
 }
