@@ -56,7 +56,10 @@ namespace IceCreamProject.Controllers
             foreach (var item in _context.Login1)
             {
                 if (item.UserName == username && item.Password == password)
+                {
+                    HelpStaticClass.IsAdmin = true;
                     return View("~/Views/Home/ManagerIndex.cshtml");
+                }
             }
             return View("~/Views/Home/Index.cshtml");
         }

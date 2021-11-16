@@ -8,7 +8,13 @@
     else
         Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<head>
+      <link rel="stylesheet" type="text/css" href="~/css/Predict.css" />
+      <style>
+          
+      </style>
 
+</head>
 <h1>Create</h1>
 
 <h4>IceCreamFlavor</h4>
@@ -27,6 +33,7 @@
                 <input asp-for="Amount" class="form-control" />
                 <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
                 <label asp-for="Flavour" class="control-label"></label>
                 <input asp-for="Flavour" class="form-control" />
