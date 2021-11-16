@@ -1,4 +1,14 @@
-﻿<body class="sub_page">
+﻿
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+      if (HelpStaticClass.IsAdmin)
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    else
+        Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body class="sub_page">
  
   <!-- about section -->
 

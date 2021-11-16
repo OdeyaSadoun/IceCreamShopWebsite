@@ -1,4 +1,14 @@
-﻿<head>
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+      if (HelpStaticClass.IsAdmin)
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    else
+        Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
 @*      <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css" />
         <link rel="stylesheet" type="text/css" href="~/css/home.css" />
   <link rel="stylesheet" type="text/css" href="~/css/style.css" />*@

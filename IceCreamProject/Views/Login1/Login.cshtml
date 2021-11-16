@@ -10,6 +10,14 @@
 </form>
 *@
 
+@{
+    ViewData["Title"] = "Login";
+      if (HelpStaticClass.IsAdmin)
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    else
+        Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <head>
   <!-- Basic -->
   <meta charset="utf-8" />
