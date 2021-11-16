@@ -15,9 +15,6 @@
 
 </head>
 <body onload="Show()">
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
 
     @{
         string values = string.Empty;
@@ -31,7 +28,6 @@
         var str = values.Remove(values.Length - 1, 1);
     }
 
-    //פטנט להעביר סטרינג שחושב בסרבר אל הקליינט
     <script>
         var data ="@str";
     </script>

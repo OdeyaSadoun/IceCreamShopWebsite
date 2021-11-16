@@ -89,191 +89,79 @@ namespace IceCreamProject.Controllers
         }
         public IActionResult predictTaste(string city)
         {
-            ViewBag.Message = PredictFlavor(city);
+           
+                ViewBag.Message = PredictFlavor(city);
             return View();
         }
-            public string PredictFlavor( string city)
+
+        public IActionResult predictTasteWithAllParameters(string city, string season, string day, double temperature)
+        {
+
+            ViewBag.Message = PredictFlavorWithAllParameters(city, season,day,temperature);
+            return View();
+        }
+        public string PredictFlavor( string city)
         {
             var day = DateTime.Now.DayOfWeek.ToString();
             WheatherClass weather = new WheatherClass();
             var temperature = weather.CheckWeather(city).feels_like;
-                if (city == null)
+            var day1 = DateTime.Now;
+            string season = "";
+            if (day1.Month == 9 || day1.Month == 10 || day1.Month == 11)
+                season = "autumn";
+            else if (day1.Month == 12 || day1.Month == 1 || day1.Month == 2)
+                season = "winter";
+            else if (day1.Month == 3 || day1.Month == 4 || day1.Month == 5)
+                season = "spring";
+            else
+                season = "summer";
+
+            if (temperature == null)
+            {
+                return "Vanilla";
+            }
+            if (temperature > 33.74096)
+            {
+                if (temperature > 37.8)
                 {
-                    return "Coconut Pleasure";
-                }
-                if (city.Equals("Jerusalem"))
-                {
-                    if (temperature == null)
+                    if (city == null)
                     {
-                        return "Ube Adventure";
+                        return "Lemon";
                     }
-                    if (temperature > 22.5)
+                    if (city.Equals("Jerusalem"))
                     {
-                        if (temperature > 29.5)
+                        if (day == null)
                         {
-                            if (day == null)
+                            return "Lemon";
+                        }
+                        if (day.Equals("Thursday"))
+                        {
+                            if (temperature > 39.5)
                             {
-                                return "Sweet Cheese";
+                                return "Lemon";
                             }
-                            if (day.Equals("Thursday"))
+                            if (temperature <= 39.5)
                             {
-                                if (temperature > 37)
-                                {
-                                    return "Blueberry Explosion";
-                                }
-                                if (temperature <= 37)
-                                {
-                                    return "Sweet Cheese";
-                                }
-                            }
-                            if (!day.Equals("Thursday"))
-                            {
-                                if (temperature > 41)
-                                {
-                                    return "Coconut Pleasure";
-                                }
-                                if (temperature <= 41)
-                                {
-                                    if (day.Equals("Sunday"))
-                                    {
-                                        return "Coconut Pleasure";
-                                    }
-                                    if (!day.Equals("Sunday"))
-                                    {
-                                        return "Sweet Cheese";
-                                    }
-                                }
+                                return "Lemon";
                             }
                         }
-                        if (temperature <= 29.5)
+                        if (!day.Equals("Thursday"))
                         {
-                            return "Coconut Pleasure";
-                        }
-                    }
-                    if (temperature <= 22.5)
-                    {
-                        if (temperature > 19.5)
-                        {
-                            return "Pistachio Craze";
-                        }
-                        if (temperature <= 19.5)
-                        {
-                            if (temperature > 17.4)
-                            {
-                                if (day == null)
-                                {
-                                    return "Strawberry Delight";
-                                }
-                                if (day.Equals("Sunday"))
-                                {
-                                    return "Strawberry Delight";
-                                }
-                                if (!day.Equals("Sunday"))
-                                {
-                                    return "Ube Adventure";
-                                }
-                            }
-                            if (temperature <= 17.4)
-                            {
-                                return "Ube Adventure";
-                            }
-                        }
-                    }
-                }
-                if (!city.Equals("Jerusalem"))
-                {
-                    if (temperature == null)
-                    {
-                        return "Pistachio Craze";
-                    }
-                    if (temperature > 32.5)
-                    {
-                        if (city.Equals("Tel Aviv"))
-                        {
-                            if (day == null)
-                            {
-                                return "Pistachio Craze";
-                            }
-                            if (day.Equals("Sunday"))
-                            {
-                                return "Bubblegum Bomb";
-                            }
-                            if (!day.Equals("Sunday"))
-                            {
-                                return "Pistachio Craze";
-                            }
-                        }
-                        if (!city.Equals("Tel Aviv"))
-                        {
-                            if (city.Equals("Modiin"))
-                            {
-                                return "Ube Adventure";
-                            }
-                            if (!city.Equals("Modiin"))
-                            {
-                                if (day == null)
-                                {
-                                    return "Strawberry Delight";
-                                }
-                                if (day.Equals("Tuesday"))
-                                {
-                                    return "Citrus Love";
-                                }
-                                if (!day.Equals("Tuesday"))
-                                {
-                                    if (temperature > 40.5)
-                                    {
-                                        if (city.Equals("Elad"))
-                                        {
-                                            return "Strawberry Delight";
-                                        }
-                                        if (!city.Equals("Elad"))
-                                        {
-                                            if (temperature > 41.5)
-                                            {
-                                                return "Pistachio Craze";
-                                            }
-                                            if (temperature <= 41.5)
-                                            {
-                                                return "Citrus Love";
-                                            }
-                                        }
-                                    }
-                                    if (temperature <= 40.5)
-                                    {
-                                        return "Strawberry Delight";
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (temperature <= 32.5)
-                    {
-                        if (city.Equals("Modiin"))
-                        {
-                            return "Coconut Pleasure";
-                        }
-                        if (!city.Equals("Modiin"))
-                        {
-                            if (day == null)
-                            {
-                                return "Blueberry Explosion";
-                            }
                             if (day.Equals("Tuesday"))
                             {
-                                if (city.Equals("Rosh Haain"))
+                                if (temperature > 40.115)
                                 {
-                                    return "Pistachio Craze";
+                                    return "Lemon";
                                 }
-                                if (!city.Equals("Rosh Haain"))
+                                if (temperature <= 40.115)
                                 {
-                                    if (city.Equals("Tel Aviv"))
+                                    if (temperature > 38.945)
                                     {
-                                        return "Coconut Pleasure";
+                                        return "Lemon";
                                     }
-                                    if (!city.Equals("Tel Aviv"))
+                                    if (temperature <= 38.945)
                                     {
-                                        return "Bubblegum Bomb";
+                                        return "Lemon";
                                     }
                                 }
                             }
@@ -281,54 +169,724 @@ namespace IceCreamProject.Controllers
                             {
                                 if (day.Equals("Friday"))
                                 {
-                                    if (temperature > 18)
-                                    {
-                                        if (temperature > 24.5)
-                                        {
-                                            return "Sweet Cheese";
-                                        }
-                                        if (temperature <= 24.5)
-                                        {
-                                            return "Pistachio Craze";
-                                        }
-                                    }
-                                    if (temperature <= 18)
-                                    {
-                                        return "Blueberry Explosion";
-                                    }
+                                    return "Lemon";
                                 }
                                 if (!day.Equals("Friday"))
                                 {
-                                    if (city.Equals("Bnei Brak"))
+                                    if (temperature > 38.53)
                                     {
-                                        if (temperature > 23.75)
+                                        if (temperature > 40.05)
                                         {
-                                            return "Coconut Pleasure";
+                                            return "Lemon";
                                         }
-                                        if (temperature <= 23.75)
+                                        if (temperature <= 40.05)
                                         {
-                                            return "Citrus Love";
+                                            if (temperature > 38.58)
+                                            {
+                                                if (day.Equals("Wednesday"))
+                                                {
+                                                    return "Lemon";
+                                                }
+                                                if (!day.Equals("Wednesday"))
+                                                {
+                                                    if (temperature > 38.75)
+                                                    {
+                                                        if (temperature > 39.2)
+                                                        {
+                                                            if (temperature > 39.75)
+                                                            {
+                                                                if (day.Equals("Sunday"))
+                                                                {
+                                                                    return "Lemon";
+                                                                }
+                                                                if (!day.Equals("Sunday"))
+                                                                {
+                                                                    return "Lemon";
+                                                                }
+                                                            }
+                                                            if (temperature <= 39.75)
+                                                            {
+                                                                return "Lemon";
+                                                            }
+                                                        }
+                                                        if (temperature <= 39.2)
+                                                        {
+                                                            return "Lemon";
+                                                        }
+                                                    }
+                                                    if (temperature <= 38.75)
+                                                    {
+                                                        return "Lemon";
+                                                    }
+                                                }
+                                            }
+                                            if (temperature <= 38.58)
+                                            {
+                                                return "Lemon";
+                                            }
                                         }
                                     }
-                                    if (!city.Equals("Bnei Brak"))
+                                    if (temperature <= 38.53)
                                     {
-                                        if (city.Equals("Petach Tiqwa"))
+                                        return "Lemon";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (!city.Equals("Jerusalem"))
+                    {
+                        if (city.Equals("Rehovot"))
+                        {
+                            if (day == null)
+                            {
+                                return "Bannana";
+                            }
+                            if (day.Equals("Monday"))
+                            {
+                                return "Bannana";
+                            }
+                            if (!day.Equals("Monday"))
+                            {
+                                return "Strawberry Delight";
+                            }
+                        }
+                        if (!city.Equals("Rehovot"))
+                        {
+                            if (city.Equals("Tel Aviv"))
+                            {
+                                if (temperature > 133.5)
+                                {
+                                    return "Chocolate";
+                                }
+                                if (temperature <= 133.5)
+                                {
+                                    return "Bannana";
+                                }
+                            }
+                            if (!city.Equals("Tel Aviv"))
+                            {
+                                if (city.Equals("Tiberia"))
+                                {
+                                    return "Vanilla";
+                                }
+                                if (!city.Equals("Tiberia"))
+                                {
+                                    if (day == null)
+                                    {
+                                        return "Lemon";
+                                    }
+                                    if (day.Equals("Wednesday"))
+                                    {
+                                        if (city.Equals("Bnei Brak"))
                                         {
-                                            return "Citrus Love";
+                                            return "Strawberry Delight";
                                         }
-                                        if (!city.Equals("Petach Tiqwa"))
+                                        if (!city.Equals("Bnei Brak"))
                                         {
-                                            return "Blueberry Explosion";
+                                            if (city.Equals("Petach Tiqwa"))
+                                            {
+                                                return "Strawberry Delight";
+                                            }
+                                            if (!city.Equals("Petach Tiqwa"))
+                                            {
+                                                return "Lemon";
+                                            }
                                         }
+                                    }
+                                    if (!day.Equals("Wednesday"))
+                                    {
+                                        return "Lemon";
                                     }
                                 }
                             }
                         }
                     }
                 }
-                return null;
+                if (temperature <= 37.8)
+                {
+                    if (city == null)
+                    {
+                        return "Bannana";
+                    }
+                    if (city.Equals("Holon"))
+                    {
+                        return "Lemon";
+                    }
+                    if (!city.Equals("Holon"))
+                    {
+                        return "Bannana";
+                    }
+                }
             }
-        
+            if (temperature <= 33.74096)
+            {
+                if (temperature > 19.15238)
+                {
+                    if (temperature > 30.4)
+                    {
+                        if (temperature > 32.75)
+                        {
+                            if (city == null)
+                            {
+                                return "Vanilla";
+                            }
+                            if (city.Equals("Eilat"))
+                            {
+                                return "Vanilla";
+                            }
+                            if (!city.Equals("Eilat"))
+                            {
+                                if (city.Equals("Haifa"))
+                                {
+                                    return "Vanilla";
+                                }
+                                if (!city.Equals("Haifa"))
+                                {
+                                    if (city.Equals("Ashdod"))
+                                    {
+                                        return "Vanilla";
+                                    }
+                                    if (!city.Equals("Ashdod"))
+                                    {
+                                        if (temperature > 33.3)
+                                        {
+                                            return "Bannana";
+                                        }
+                                        if (temperature <= 33.3)
+                                        {
+                                            return "Strawberries in cream";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if (temperature <= 32.75)
+                        {
+                            return "Bannana";
+                        }
+                    }
+                    if (temperature <= 30.4)
+                    {
+                        if (city == null)
+                        {
+                            return "Vanilla";
+                        }
+                        if (city.Equals("Netanya"))
+                        {
+                            if (season == null)
+                            {
+                                return "Lotus";
+                            }
+                            if (season.Equals("summer"))
+                            {
+                                return "Lotus";
+                            }
+                            if (!season.Equals("summer"))
+                            {
+                                return "Vanilla";
+                            }
+                        }
+                        if (!city.Equals("Netanya"))
+                        {
+                            if (temperature > 28.05)
+                            {
+                                if (city.Equals("Tiberia"))
+                                {
+                                    return "Vanilla";
+                                }
+                                if (!city.Equals("Tiberia"))
+                                {
+                                    return "Bannana";
+                                }
+                            }
+                            if (temperature <= 28.05)
+                            {
+                                if (city.Equals("Tiberia"))
+                                {
+                                    if (temperature > 24.45)
+                                    {
+                                        return "Vanilla";
+                                    }
+                                    if (temperature <= 24.45)
+                                    {
+                                        return "Chocolate";
+                                    }
+                                }
+                                if (!city.Equals("Tiberia"))
+                                {
+                                    if (city.Equals("Ashdod"))
+                                    {
+                                        if (temperature > 24.5)
+                                        {
+                                            return "Chocolate";
+                                        }
+                                        if (temperature <= 24.5)
+                                        {
+                                            return "Vanilla";
+                                        }
+                                    }
+                                    if (!city.Equals("Ashdod"))
+                                    {
+                                        return "Chocolate";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (temperature <= 19.15238)
+                {
+                    if (temperature > 12.5)
+                    {
+                        if (city == null)
+                        {
+                            return "chocolate";
+                        }
+                        if (city.Equals("Tel Aviv"))
+                        {
+                            return "chocolate";
+                        }
+                        if (!city.Equals("Tel Aviv"))
+                        {
+                            if (city.Equals("Rehovot"))
+                            {
+                                return "chocolate";
+                            }
+                            if (!city.Equals("Rehovot"))
+                            {
+                                return "Pistachio Craze";
+                            }
+                        }
+                    }
+                    if (temperature <= 12.5)
+                    {
+                        if (city == null)
+                        {
+                            return "Strawberries in cream";
+                        }
+                        if (city.Equals("Jerusalem"))
+                        {
+                            return "chocolate";
+                        }
+                        if (!city.Equals("Jerusalem"))
+                        {
+                            if (city.Equals("Petah Tiqwa"))
+                            {
+                                return "chocolate";
+                            }
+                            if (!city.Equals("Petah Tiqwa"))
+                            {
+                                if (city.Equals("Netanya"))
+                                {
+                                    return "Strawberries in cream";
+                                }
+                                if (!city.Equals("Netanya"))
+                                {
+                                    if (city.Equals("Eilat"))
+                                    {
+                                        return "Strawberries in cream";
+                                    }
+                                    if (!city.Equals("Eilat"))
+                                    {
+                                        return "Vanilla";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        public string PredictFlavorWithAllParameters(string city, string season, string day, double temperature)
+        {
+  
+            if (temperature == null)
+            {
+                return "Vanilla";
+            }
+            if (temperature > 33.74096)
+            {
+                if (temperature > 37.8)
+                {
+                    if (city == null)
+                    {
+                        return "Lemon";
+                    }
+                    if (city.Equals("Jerusalem"))
+                    {
+                        if (day == null)
+                        {
+                            return "Lemon";
+                        }
+                        if (day.Equals("Thursday"))
+                        {
+                            if (temperature > 39.5)
+                            {
+                                return "Lemon";
+                            }
+                            if (temperature <= 39.5)
+                            {
+                                return "Lemon";
+                            }
+                        }
+                        if (!day.Equals("Thursday"))
+                        {
+                            if (day.Equals("Tuesday"))
+                            {
+                                if (temperature > 40.115)
+                                {
+                                    return "Lemon";
+                                }
+                                if (temperature <= 40.115)
+                                {
+                                    if (temperature > 38.945)
+                                    {
+                                        return "Lemon";
+                                    }
+                                    if (temperature <= 38.945)
+                                    {
+                                        return "Lemon";
+                                    }
+                                }
+                            }
+                            if (!day.Equals("Tuesday"))
+                            {
+                                if (day.Equals("Friday"))
+                                {
+                                    return "Lemon";
+                                }
+                                if (!day.Equals("Friday"))
+                                {
+                                    if (temperature > 38.53)
+                                    {
+                                        if (temperature > 40.05)
+                                        {
+                                            return "Lemon";
+                                        }
+                                        if (temperature <= 40.05)
+                                        {
+                                            if (temperature > 38.58)
+                                            {
+                                                if (day.Equals("Wednesday"))
+                                                {
+                                                    return "Lemon";
+                                                }
+                                                if (!day.Equals("Wednesday"))
+                                                {
+                                                    if (temperature > 38.75)
+                                                    {
+                                                        if (temperature > 39.2)
+                                                        {
+                                                            if (temperature > 39.75)
+                                                            {
+                                                                if (day.Equals("Sunday"))
+                                                                {
+                                                                    return "Lemon";
+                                                                }
+                                                                if (!day.Equals("Sunday"))
+                                                                {
+                                                                    return "Lemon";
+                                                                }
+                                                            }
+                                                            if (temperature <= 39.75)
+                                                            {
+                                                                return "Lemon";
+                                                            }
+                                                        }
+                                                        if (temperature <= 39.2)
+                                                        {
+                                                            return "Lemon";
+                                                        }
+                                                    }
+                                                    if (temperature <= 38.75)
+                                                    {
+                                                        return "Lemon";
+                                                    }
+                                                }
+                                            }
+                                            if (temperature <= 38.58)
+                                            {
+                                                return "Lemon";
+                                            }
+                                        }
+                                    }
+                                    if (temperature <= 38.53)
+                                    {
+                                        return "Lemon";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (!city.Equals("Jerusalem"))
+                    {
+                        if (city.Equals("Rehovot"))
+                        {
+                            if (day == null)
+                            {
+                                return "Bannana";
+                            }
+                            if (day.Equals("Monday"))
+                            {
+                                return "Bannana";
+                            }
+                            if (!day.Equals("Monday"))
+                            {
+                                return "Strawberry Delight";
+                            }
+                        }
+                        if (!city.Equals("Rehovot"))
+                        {
+                            if (city.Equals("Tel Aviv"))
+                            {
+                                if (temperature > 133.5)
+                                {
+                                    return "Chocolate";
+                                }
+                                if (temperature <= 133.5)
+                                {
+                                    return "Bannana";
+                                }
+                            }
+                            if (!city.Equals("Tel Aviv"))
+                            {
+                                if (city.Equals("Tiberia"))
+                                {
+                                    return "Vanilla";
+                                }
+                                if (!city.Equals("Tiberia"))
+                                {
+                                    if (day == null)
+                                    {
+                                        return "Lemon";
+                                    }
+                                    if (day.Equals("Wednesday"))
+                                    {
+                                        if (city.Equals("Bnei Brak"))
+                                        {
+                                            return "Strawberry Delight";
+                                        }
+                                        if (!city.Equals("Bnei Brak"))
+                                        {
+                                            if (city.Equals("Petach Tiqwa"))
+                                            {
+                                                return "Strawberry Delight";
+                                            }
+                                            if (!city.Equals("Petach Tiqwa"))
+                                            {
+                                                return "Lemon";
+                                            }
+                                        }
+                                    }
+                                    if (!day.Equals("Wednesday"))
+                                    {
+                                        return "Lemon";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (temperature <= 37.8)
+                {
+                    if (city == null)
+                    {
+                        return "Bannana";
+                    }
+                    if (city.Equals("Holon"))
+                    {
+                        return "Lemon";
+                    }
+                    if (!city.Equals("Holon"))
+                    {
+                        return "Bannana";
+                    }
+                }
+            }
+            if (temperature <= 33.74096)
+            {
+                if (temperature > 19.15238)
+                {
+                    if (temperature > 30.4)
+                    {
+                        if (temperature > 32.75)
+                        {
+                            if (city == null)
+                            {
+                                return "Vanilla";
+                            }
+                            if (city.Equals("Eilat"))
+                            {
+                                return "Vanilla";
+                            }
+                            if (!city.Equals("Eilat"))
+                            {
+                                if (city.Equals("Haifa"))
+                                {
+                                    return "Vanilla";
+                                }
+                                if (!city.Equals("Haifa"))
+                                {
+                                    if (city.Equals("Ashdod"))
+                                    {
+                                        return "Vanilla";
+                                    }
+                                    if (!city.Equals("Ashdod"))
+                                    {
+                                        if (temperature > 33.3)
+                                        {
+                                            return "Bannana";
+                                        }
+                                        if (temperature <= 33.3)
+                                        {
+                                            return "Strawberries in cream";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if (temperature <= 32.75)
+                        {
+                            return "Bannana";
+                        }
+                    }
+                    if (temperature <= 30.4)
+                    {
+                        if (city == null)
+                        {
+                            return "Vanilla";
+                        }
+                        if (city.Equals("Netanya"))
+                        {
+                            if (season == null)
+                            {
+                                return "Lotus";
+                            }
+                            if (season.Equals("summer"))
+                            {
+                                return "Lotus";
+                            }
+                            if (!season.Equals("summer"))
+                            {
+                                return "Vanilla";
+                            }
+                        }
+                        if (!city.Equals("Netanya"))
+                        {
+                            if (temperature > 28.05)
+                            {
+                                if (city.Equals("Tiberia"))
+                                {
+                                    return "Vanilla";
+                                }
+                                if (!city.Equals("Tiberia"))
+                                {
+                                    return "Bannana";
+                                }
+                            }
+                            if (temperature <= 28.05)
+                            {
+                                if (city.Equals("Tiberia"))
+                                {
+                                    if (temperature > 24.45)
+                                    {
+                                        return "Vanilla";
+                                    }
+                                    if (temperature <= 24.45)
+                                    {
+                                        return "Chocolate";
+                                    }
+                                }
+                                if (!city.Equals("Tiberia"))
+                                {
+                                    if (city.Equals("Ashdod"))
+                                    {
+                                        if (temperature > 24.5)
+                                        {
+                                            return "Chocolate";
+                                        }
+                                        if (temperature <= 24.5)
+                                        {
+                                            return "Vanilla";
+                                        }
+                                    }
+                                    if (!city.Equals("Ashdod"))
+                                    {
+                                        return "Chocolate";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (temperature <= 19.15238)
+                {
+                    if (temperature > 12.5)
+                    {
+                        if (city == null)
+                        {
+                            return "chocolate";
+                        }
+                        if (city.Equals("Tel Aviv"))
+                        {
+                            return "chocolate";
+                        }
+                        if (!city.Equals("Tel Aviv"))
+                        {
+                            if (city.Equals("Rehovot"))
+                            {
+                                return "chocolate";
+                            }
+                            if (!city.Equals("Rehovot"))
+                            {
+                                return "Pistachio Craze";
+                            }
+                        }
+                    }
+                    if (temperature <= 12.5)
+                    {
+                        if (city == null)
+                        {
+                            return "Strawberries in cream";
+                        }
+                        if (city.Equals("Jerusalem"))
+                        {
+                            return "chocolate";
+                        }
+                        if (!city.Equals("Jerusalem"))
+                        {
+                            if (city.Equals("Petah Tiqwa"))
+                            {
+                                return "chocolate";
+                            }
+                            if (!city.Equals("Petah Tiqwa"))
+                            {
+                                if (city.Equals("Netanya"))
+                                {
+                                    return "Strawberries in cream";
+                                }
+                                if (!city.Equals("Netanya"))
+                                {
+                                    if (city.Equals("Eilat"))
+                                    {
+                                        return "Strawberries in cream";
+                                    }
+                                    if (!city.Equals("Eilat"))
+                                    {
+                                        return "Vanilla";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
 
 
 

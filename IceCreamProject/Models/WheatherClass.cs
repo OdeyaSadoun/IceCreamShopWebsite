@@ -23,13 +23,16 @@ namespace IceCreamProject.Models
             client.Timeout = -1;
 
             var request = new RestRequest(Method.GET);
+
             request.AddParameter("q", city);
             request.AddParameter("appid", apiKey);
             request.AddParameter("units", "metric");
             IRestResponse response = client.Execute(request);//JSON
+
+
+
             result = ConvertToDictionary(response.Content);//string(JSON)
             return result;
-
 
         }
     }

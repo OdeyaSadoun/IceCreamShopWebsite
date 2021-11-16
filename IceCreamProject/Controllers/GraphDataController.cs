@@ -13,6 +13,8 @@ namespace IceCreamProject.Controllers
     public class GraphDataController : ControllerBase
     {
 
+
+
         // GET: api/<graphDataController>
         [HttpGet]
         public ActionResult Get()

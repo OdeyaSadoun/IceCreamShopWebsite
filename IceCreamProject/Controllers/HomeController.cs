@@ -13,15 +13,37 @@ namespace IceCreamProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+        private readonly OrdersContext _context;
+        public HomeController(OrdersContext context)
         {
-            _logger = logger;
+            _context = context;
+        }
+
+        public IActionResult ShowGraph()
+        {
+            //mockup data
+            List<Temprature> values = new List<Temprature> { };
+            foreach (var item in _context.Order)
+            {
+                values.Add(new Temprature { Id = item.Id, Month = item.Date.Month.ToString(), TempValue = (((int)item.FeelsLike)) });
+            }
+
+            return View(values);
         }
 
         public IActionResult Index()
         {
             return View();
         }
+
+ 
+
+
         public IActionResult About()
         {
             return View();
