@@ -45,6 +45,8 @@ namespace IceCreamProject.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
+            ViewBag.Message = (from item in _context.IceCreamFlavor
+                               select item.Flavour).ToList();
             return View();
         }
 
@@ -58,7 +60,13 @@ namespace IceCreamProject.Controllers
             if (ModelState.IsValid)
             {
                 Main weather = findWeather(order.City);
-                order.Date = DateTime.Now.Date;
+                if(weather == null)
+                {
+
+                    return View("~/Views/Orders/create");
+                }
+
+                order.Date = DateTime.Now;
                 order.FeelsLike = weather.feels_like;
                 order.Pressure = weather.pressure;
                 order.Humidity = weather.humidity;

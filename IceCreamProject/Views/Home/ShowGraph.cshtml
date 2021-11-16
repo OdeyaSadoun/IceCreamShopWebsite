@@ -1,0 +1,66 @@
+﻿@model IEnumerable<IceCreamProject.Models.Temprature>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowGraph</title>
+
+
+
+</head>
+<body onload="Show()">
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+
+    @{
+        string values = string.Empty;
+    }
+    @foreach (var item in Model)
+    {
+        var val = item.TempValue;
+        values += "{y:" + val + "},";
+    }
+    @{
+        var str = values.Remove(values.Length - 1, 1);
+    }
+
+    //פטנט להעביר סטרינג שחושב בסרבר אל הקליינט
+    <script>
+        var data ="@str";
+    </script>
+
+
+    <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+
+    <script src="~/js/canvasjs.min.js"></script>
+
+    <script>
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                theme: "light2",
+                title: {
+                    text: "Simple Line Chart"
+                },
+                axisY: {
+                    includeZero: false
+                },
+                data: [{
+                    type: "line",
+                    dataPoints: eval("[" + data + "]")
+                }]
+            });
+            chart.render();
+
+        }
+    </script>
+</body>
+</html>

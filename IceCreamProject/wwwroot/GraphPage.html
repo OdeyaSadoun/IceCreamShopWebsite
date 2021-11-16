@@ -1,0 +1,53 @@
+﻿
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script>        
+
+        function GetDataAndShowGraph() {
+            alert("hi");
+            $.ajax('/api/graphData',   // request url
+                {
+                    success: function (data, status, xhr) {// success callback function  
+                        dataToView = data;
+                        showData(dataToView);
+                    }
+                });
+        }
+
+        function showData(dataToView) {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                title: {
+                    text: "הזמנת גלידות"
+                },
+                axisX: {
+
+                },
+                axisY: {
+                    title: "Number of Vannlia Ice Cream",
+                    includeZero: false,
+                    scaleBreaks: {
+                        autoCalculate: true
+                    }
+                },
+                data: [{
+                    type: "line",
+                    color: "#F08080",
+                    dataPoints: dataToView
+                }]
+            });
+            chart.render();
+
+        }
+    </script>
+</head>
+<body>
+    <button onclick="GetDataAndShowGraph()">לחץ כאן לטעינת נתוני הגראף</button>
+    <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+    <script src="js/canvasjs.min.js"></script>
+</body>
+</html>
