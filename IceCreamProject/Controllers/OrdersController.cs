@@ -59,26 +59,46 @@ namespace IceCreamProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                Main weather = findWeather(order.City);
-                if(weather == null)
+                bool flag = checkStreet(order.City, order.Street);
+                if (flag)
                 {
 
-                    return View("~/Views/Orders/create");
+                    Main weather = findWeather(order.City);
+                    if (weather == null)
+                    {
+
+                        return View("~/Views/Orders/create");
+                    }
+
+                    order.Date = DateTime.Now;
+                    order.FeelsLike = weather.feels_like;
+                    order.Pressure = weather.pressure;
+                    order.Humidity = weather.humidity;
+
+                    _context.Add(order);
+
+                    await _context.SaveChangesAsync();
                 }
-
-                order.Date = DateTime.Now;
-                order.FeelsLike = weather.feels_like;
-                order.Pressure = weather.pressure;
-                order.Humidity = weather.humidity;
-
-                _context.Add(order);
-
-                await _context.SaveChangesAsync();
+                else
+                {
+                    ViewBag.Messge = _context.IceCreamFlavor.ToList();
+                }
                 return RedirectToAction(nameof(Index));
             }
             return View(order);
         }
 
+
+        public bool checkStreet(string City, string Street)
+        {
+            AddressChecking addressChecking = new AddressChecking();
+            Boolean result = addressChecking.CheckAddress(City, Street);
+            if (result)
+                return true;
+            else
+                return false;
+
+        }
         public Main findWeather(string City)
         {
             WheatherClass weather = new WheatherClass();
