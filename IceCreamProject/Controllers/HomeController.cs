@@ -11,6 +11,7 @@ namespace IceCreamProject.Controllers
 {
     public class HomeController : Controller
     {
+        static string LayoutName = "Layout";
         private readonly ILogger<HomeController> _logger;
 
         //public HomeController(ILogger<HomeController> logger)
@@ -38,11 +39,16 @@ namespace IceCreamProject.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Layout"] = LayoutName; 
             return View();
         }
 
- 
 
+        public IActionResult ChangeUserMode(string layoutName)
+        {
+            LayoutName = layoutName;
+            return RedirectToAction("Index", "Home");
+        }
 
         public IActionResult About()
         {
