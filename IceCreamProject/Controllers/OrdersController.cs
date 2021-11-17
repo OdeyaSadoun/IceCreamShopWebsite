@@ -23,7 +23,10 @@ namespace IceCreamProject.Controllers
         {
             return View(await _context.Order.ToListAsync());
         }
-
+        public async Task<IActionResult> IndexAdmin()
+        {
+            return View(await _context.Order.ToListAsync());
+        }
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -85,6 +88,7 @@ namespace IceCreamProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+           
             return View(order);
         }
 

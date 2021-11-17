@@ -105,6 +105,7 @@ namespace IceCreamProject.Controllers
             var day = DateTime.Now.DayOfWeek.ToString();
             WheatherClass weather = new WheatherClass();
             var temperature = weather.CheckWeather(city).feels_like;
+            
             var day1 = DateTime.Now;
             string season = "";
             if (day1.Month == 9 || day1.Month == 10 || day1.Month == 11)

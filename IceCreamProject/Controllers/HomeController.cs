@@ -42,6 +42,11 @@ namespace IceCreamProject.Controllers
             ViewData["Layout"] = LayoutName; 
             return View();
         }
+        public IActionResult ManagerIndex()
+        {
+            ViewData["Layout"] = LayoutName;
+            return View();
+        }
 
 
         public IActionResult ChangeUserMode(string layoutName)
