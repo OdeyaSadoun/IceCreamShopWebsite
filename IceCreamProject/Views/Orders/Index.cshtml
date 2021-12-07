@@ -16,90 +16,9 @@
       </style>
 
 </head>
-<h1>Index</h1>
+<body>
+    <h1>Thank you for your order!</h1>
+<p>Your order has been accepted. <br /> see you!</p>
+</body>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Street)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HouseNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IceCream)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FeelsLike)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Humidity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pressure)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Street)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HouseNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IceCream)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FeelsLike)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Humidity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pressure)
-                </td>
-                <td>
 
-            </tr>
-        }
-    </tbody>
-</table>
